@@ -1,0 +1,19 @@
+spring:
+  profiles:
+    active: dev
+  datasource:
+    url: jdbc:h2:file:${h2.data-dir}
+    driver-class-name: org.h2.Driver
+    username:
+    password:
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+    database: h2
+  h2:
+    console:
+      enabled: true
+
+
+
