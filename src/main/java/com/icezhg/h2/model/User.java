@@ -5,14 +5,17 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
+import org.hibernate.annotations.GenericGenerator;
+
 
 @Entity
 public class User implements Serializable {
     private static final long serialVersionUID = -8800899786635799816L;
 
     @Id
-    @GeneratedValue
-    private long id;
+    @GenericGenerator(name="uuid", strategy = "uuid")
+    @GeneratedValue(generator = "uuid")
+    private String id;
     private String name;
     private int age;
 
@@ -24,11 +27,11 @@ public class User implements Serializable {
         this.age = age;
     }
 
-    public long getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(String id) {
         this.id = id;
     }
 
