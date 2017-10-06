@@ -4,7 +4,7 @@ spring:
   datasource:
     url: jdbc:h2:file:${h2.data-dir}
     driver-class-name: org.h2.Driver
-    username:
+    username: root
     password:
   jpa:
     hibernate:
@@ -14,6 +14,12 @@ spring:
   h2:
     console:
       enabled: true
+  http:
+    multipart:
+      enabled: true
+      max-file-size: 20MB
+      max-request-size: 20MB
+
 
 
 
