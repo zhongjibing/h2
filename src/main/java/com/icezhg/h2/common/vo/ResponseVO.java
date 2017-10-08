@@ -1,22 +1,22 @@
-package com.icezhg.h2.common;
+package com.icezhg.h2.common.vo;
 
 import java.io.Serializable;
 
 /**
- * Response:
+ * ResponseVO:
  *
  * @author zhongjibing 2017-10-09
  * @version 1.0
  */
-public class Response implements Serializable {
+public class ResponseVO implements Serializable {
     private static final long serialVersionUID = -5261492218850783208L;
-    
+
     private String code;
     private String status;
     private String message;
     private Object data;
 
-    public Response() {
+    public ResponseVO() {
     }
 
     public String getCode() {

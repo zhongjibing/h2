@@ -6,26 +6,23 @@ import javax.servlet.http.HttpServletRequest;
 import com.icezhg.h2.model.User;
 import com.icezhg.h2.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.method.support.HandlerMethodArgumentResolver;
 
 @RestController
 @RequestMapping(value = "/users")
 public class UserController {
 
     @Autowired
-    private List<HandlerMethodArgumentResolver> argumentResolvers;
-
-    @Autowired
     private UserService userService;
 
     @GetMapping(value = "/list")
-    public List<User> listUsers(HttpServletRequest request) {
+    public List<User> listUsers(HttpServletRequest request, Sort sort) {
         return userService.findAll();
     }
 
