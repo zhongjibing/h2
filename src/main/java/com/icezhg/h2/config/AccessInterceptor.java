@@ -1,8 +1,10 @@
 package com.icezhg.h2.config;
 
 import java.util.Date;
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.icezhg.h2.model.AccessEntity;
 import org.slf4j.Logger;
@@ -30,8 +32,9 @@ public class AccessInterceptor implements HandlerInterceptor {
         entity.setMethod(request.getMethod());
         entity.setParamData(null);
         entity.setRequestTime(new Date());
-        entity.setSessionId(request.getRequestedSessionId());
+        entity.setSessionId(request.getSession().getId());
         request.setAttribute(ACCESS_ENTITY, entity);
+
         return true;
     }
 

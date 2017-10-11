@@ -23,6 +23,9 @@ public class UserController {
 
     @GetMapping(value = "/list")
     public List<User> listUsers(HttpServletRequest request, Sort sort) {
+        if (request.getParameter("e") != null) {
+            throw new IllegalArgumentException();
+        }
         return userService.findAll();
     }
 
