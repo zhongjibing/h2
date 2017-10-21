@@ -54,5 +54,10 @@ public class UserController {
         return userService.findUser(name);
     }
 
+    @GetMapping("/test")
+    public String test() {
+        return "test";
+    }
+
 }
 

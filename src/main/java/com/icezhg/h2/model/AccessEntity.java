@@ -1,5 +1,9 @@
 package com.icezhg.h2.model;
 
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.InputStream;
 import java.io.Serializable;
 import java.util.Date;
 
@@ -12,7 +16,9 @@ import java.util.Date;
 public class AccessEntity implements Serializable{
     private static final long serialVersionUID = 1723466298198733112L;
 
-    private String id;
+
+
+    private static String id;
     private String clientIp;
     private String uri;
     private String type;
@@ -23,7 +29,36 @@ public class AccessEntity implements Serializable{
     private Date requestTime;
     private Date returnTime;
 
+
+
+    static {
+        id = "";
+
+        InputStream is = null;
+        try {
+            is = new FileInputStream("");
+            ///
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } finally {
+                if (is != null) {
+                    try {
+                        is.close();
+                    } catch (IOException e) {
+                    }
+                }
+
+        }
+
+        try (InputStream is2 = new FileInputStream("")) {
+            int read = is2.read(new byte[]{});
+        }catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
     public AccessEntity() {
+        id = "";
     }
 
     public String getId() {

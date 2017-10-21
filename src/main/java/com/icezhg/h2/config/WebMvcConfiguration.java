@@ -35,7 +35,10 @@ public class WebMvcConfiguration extends WebMvcConfigurerAdapter {
     private void removedReturnValueHandlers(RequestMappingHandlerAdapter adapter) {
         List<HandlerMethodReturnValueHandler> returnValueHandlers = new ArrayList<>();
         for (HandlerMethodReturnValueHandler handler : adapter.getReturnValueHandlers()) {
-            if (!(handler instanceof RequestResponseBodyMethodProcessor)) {
+            if (handler instanceof RequestResponseBodyMethodProcessor) {
+                RequestResponseBodyMethodProcessor processor = (RequestResponseBodyMethodProcessor) handler;
+                returnValueHandlers.add(new WrappedRequestResponseBodyMethodProcessor(processor));
+            } else {
                 returnValueHandlers.add(handler);
             }
         }
@@ -127,4 +130,5 @@ public class WebMvcConfiguration extends WebMvcConfigurerAdapter {
     public void configureMessageConverters(List<HttpMessageConverter<?>> converters) {
         super.configureMessageConverters(converters);
     }
+
 }
